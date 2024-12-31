@@ -10,11 +10,11 @@ export class ApiServiceService {
 
   username: any = "";
   token: any = "";
-    private baseUrl = 'http://localhost:8081/api';
+    private baseUrl = 'http://localhost:8080/back';
   
     constructor(private http: HttpClient) {}
     connexion(request: any) {
-      return this.http.post("http://127.0.0.1:8081/auth/login", request, { observe: 'response' });
+      return this.http.post("http://127.0.0.1:8080/auth/login", request, { observe: 'response' });
     }
 
     saveToken(token: any) {
@@ -29,7 +29,7 @@ export class ApiServiceService {
     getAllTerrains(){
       let token: any = localStorage.getItem("token");
     let headers = new HttpHeaders({ "authorization": token });
-      return this.http.get(`http://localhost:8081/api/terrains`,{headers:headers});
+      return this.http.get(`http://localhost:8080/back/terrains`,{headers:headers});
     }
   
     addTerrain(terrain: any){
@@ -48,20 +48,20 @@ export class ApiServiceService {
     getAllAdherants() {
       let token: any = localStorage.getItem("token");
     let headers = new HttpHeaders({ "authorization": token });
-      return this.http.get(`${this.baseUrl}/adherants`,{headers:headers});
+      return this.http.get(`${this.baseUrl}/adherents`,{headers:headers});
     }
   
     addAdherant(adherant: any) {
       let token: any = localStorage.getItem("token");
     let headers = new HttpHeaders({ "authorization": token });
       
-      return this.http.post(`${this.baseUrl}/adherants`, adherant,{headers:headers});
+      return this.http.post(`${this.baseUrl}/adherents`, adherant,{headers:headers});
     }
   
     deleteAdherant(id: number){
       let token: any = localStorage.getItem("token");
     let headers = new HttpHeaders({ "authorization": token });
-      return this.http.delete(`http://localhost:8081/api/adherants/${id}`,{headers:headers});
+      return this.http.delete(`http://localhost:8081/back/adherents/${id}`,{headers:headers});
     }
   
     // === Reservation ===

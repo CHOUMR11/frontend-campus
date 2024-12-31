@@ -17,7 +17,7 @@ export class AddAdherantComponent {
     this.apiService.addAdherant(this.newAdherant).subscribe(
 
       {
-        "next" : data=>{ this.route.navigateByUrl("/adherant")},
+        "next" : data=>{ this.route.navigateByUrl("/adherent")},
         "error" : err => {},
         "complete":()=>{}
       }
